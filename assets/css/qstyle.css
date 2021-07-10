@@ -1,7 +1,7 @@
 *, *::before, *::after {
 box-sizing: border-box;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+font-size: x-large;
 }
 :root {
     --hue-neutral: 200;
@@ -29,8 +29,48 @@ body.correct {
 .container {
     width: 800px;
     max-width: 80%;
-    background-color: bisque;
+    background-color:rgba(52, 202, 114, 0.623);
     border-radius: 5px;
     box-shadow: 0 0 10px 10px;
    
+}
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 30px;
+    margin: 20px 0;
+}
+.btn {
+    --hue: var(--hue-neutrl);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color:floralwhite;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color:mediumblue;
+    outline: none;
+}
+.btn:hover {
+    border-color: black;
+}
+.btn.correct {
+    --hue: var(--hue-correct);
+    color:black;
+}
+
+.btn.wrong{
+    --hue: var(--hue-wrong);
+}
+.start-btn, .next-btn {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.controls {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
 }
