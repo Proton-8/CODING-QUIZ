@@ -1,4 +1,4 @@
-body {
+/*body {
     background-color: #eff5f8
   }
   
@@ -40,9 +40,9 @@ body {
   .tip-area {
     padding-bottom: 20px;
   }
-  
+  */
 
-  /*
+  
   * {
   box-sizing: border-box;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .reset-button {
-  font-size: 16px;
+  font-size: 20px;
   height: 30px;
   line-height: 8px;
   margin-top: 20px;
@@ -72,13 +72,13 @@ body {
 
 button {
   background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
-  border-radius: 8px;
+  border-radius: 10px;
   color: #13293d;
   cursor: pointer;
   font-size: 2em;
-  letter-spacing: 0.21px;
-  line-height: 16px;
-  max-width: 255px;
+  letter-spacing: 1px;
+  line-height: 25px;
+  max-width: 300px;
   padding: 20px 52px;
   text-align: center;
   transition-duration: 0.15s;
@@ -88,11 +88,13 @@ button {
 }
 
 header {
-  padding: 40px;
+    flex: 0 auto;
+     padding: 100px;
   text-align: center;
+  justify-content: space-evenly;
   background: #13293d;
   color: #fff;
-  border-bottom:30px #879274;
+  /* border-bottom:30px #879274;*/
 }
 
 main {
@@ -140,7 +142,7 @@ section {
 
 .timer {
   height: 240px;
-  padding: 10px;
+  padding: px;
   background: #13293d;
   color: #fff;
   text-align: center;

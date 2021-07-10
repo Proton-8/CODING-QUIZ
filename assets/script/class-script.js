@@ -1,40 +1,7 @@
-var tipEl = document.querySelector("#tip-percentage");
-var totalEl = document.querySelector("#total");
-var submitEl = document.querySelector("#submit");
 
-function calculateTip(total, tipPercentage) {
-  var roundedResult = (total * tipPercentage).toFixed(2);
-  return roundedResult;
-}
-
-function calculateTotal(total, tipAmount) {
-  return parseFloat(total) + parseFloat(tipAmount);
-}
-
-function addTip(event) {
-  // Prevent default action
-  event.preventDefault();
-  // Store tip and total calculations in variables
-  var tipPercentage = tipEl.value * .01;
-  var total = totalEl.value;
-  var tipAmount = calculateTip(total, tipPercentage);
-  var newTotal = calculateTotal(tipAmount, total);
-  // Update HTML with tip and total
-  document.querySelector("#tip-amount").textContent = tipAmount;
-  // Use toFixed() to limit to two decimal places
-  document.querySelector("#new-total").textContent = newTotal.toFixed(2);
-}
-
-// Add listener to submit element
-submitEl.addEventListener("click", addTip);
-
-
-
-
-/*
 var wordBlank = document.querySelector(".word-blanks");
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
+var correct = document.querySelector(".win");
+var incorrect = document.querySelector(".lose");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
 
@@ -54,35 +21,35 @@ var blanksLetters = [];
 var words = ["variable","array", "modulus", "object", "function", "string", "boolean"];
 
 // The init function is called when the page loads 
-function init() {
-  getWins();
-  getlosses();
-}
+//function init() {
+//  getWins();
+ // getlosses();
+//}
 
 // The startGame function is called when the start button is clicked
 function startGame() {
   isWin = false;
-  timerCount = 10;
+  timerCount = 25;
   // Prevents start button from being clicked when round is in progress
   startButton.disabled = true;
   renderBlanks()
   startTimer()
 }
 
-// The winGame function is called when the win condition is met
-function winGame() {
-  wordBlank.textContent = "YOU WON!!!🏆 ";
-  winCounter++
-  startButton.disabled = false;
-  setWins()
+// The Correct function is called when the correct answer is met
+function Correct() {
+  //wordBlank.textContent = "YOU WON!!!🏆 ";
+  CorrectCounter++
+ // startButton.disabled = false;
+  setcorrect()
 }
 
 // The loseGame function is called when timer reaches 0
-function loseGame() {
-  wordBlank.textContent = "GAME OVER";
-  loseCounter++
-  startButton.disabled = false;
-  setLosses()
+function Incorrect() {
+  //wordBlank.textContent = "GAME OVER";
+  IncorrectCounter++
+  //startButton.disabled = false;
+  setIncorrect()
 }
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
