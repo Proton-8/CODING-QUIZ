@@ -1,8 +1,8 @@
 const startButton = document.getElementById('start-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById ('answer-buttomns')
-
+const answerButtonsElement = document.getElementById ('answer-buttons')
+const timerElement = document.querySelector(".timer-count");
 let shuffledQuestions 
 let currentQuestionIndex
 let score = 0;
@@ -10,7 +10,7 @@ let winCounter = 0;
 let loseCounter = 0;
 let isWin = false;
 let timer;
-let timerCount;
+let timerCount = 999;
 
 
 
@@ -20,20 +20,23 @@ startButton.addEventListener('click', startGame)
 
 
 function startGame(){
-    console.log('good to go')
-startButton.classList.add('hide')
-shuffledQuestions = questions.sort(() => Math.random() - .5)
-currentQuestionIndex = 0
-questionContainerElement.classList.remove('hide')
-setNextQuestion()
+    startTimer();
+    console.log('good to go');
+startButton.classList.add('hide');
+shuffledQuestions = questionArray.sort(() => Math.random() - .5);
+currentQuestionIndex = 0;
+questionContainerElement.classList.remove('hide');
+setNextQuestion();
 }
 function setNextQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex])
 
 }
 function showQuestion(question){
-    questionElement.innerText = question.question
-    question.answers.forEach(answer => {
+    questionElement.innerText = questionArray[0].questionText
+    let myAnswers = questionArray[0].answers
+    console.log (myAnswers)
+    questionArray[0].answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn')
@@ -41,7 +44,7 @@ function showQuestion(question){
             button.dataset.correct = answer.correct
         }
         button.addEventListener('click', selectAnswer)
-        answer-buttonsElement.appendChild(button)
+        answerButtonsElement.appendChild(button)
 
     })
 }
@@ -50,23 +53,24 @@ function resetState(){
 }
 
 function selectAnswer(e) {
+console.log(e.target)
 
 }
 
-const questions = [
+const questionArray = [
     {
-    question: ' What is 1 + 3 =  ??',
-    answer: [
+    questionText: ' What is 1 + 3 =  ??',
+    answers: [
         {text: '4',correct: true },
         {text: '5', correct: false},
         {text: '88', correct: false},
-     
+        {text: '808', correct: false}
             ]
 
     },
     {
-        question: ' What is 5 + 3 =  ??',
-        answer: [
+        questionText: ' What is 5 + 3 =  ??',
+        answers: [
             {text: '8', correct: true },
             {text: '10', correct: false},
             {text: '22', correct: false}
@@ -75,7 +79,7 @@ const questions = [
     },
     {
 
-        question: ' Which one of these is a JavaScript package manager?',
+        questionText: ' Which one of these is a JavaScript package manager?',
         answers: [
             {text:"Node.js", correct: false},
             {text:"TypeScript", correct: false},
@@ -128,7 +132,7 @@ function startTimer() {
       }
     }, 1000);
   }
-
+console.log(timerCount);
 
 /*
 
