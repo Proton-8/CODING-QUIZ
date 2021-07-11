@@ -27,13 +27,15 @@ body.correct {
 }
 
 .container {
-    width: 800px;
+    width: 680px;
     max-width: 80%;
     background-color:rgba(52, 202, 114, 0.623);
     border-radius: 5px;
     box-shadow: 0 0 10px 10px;
+    margin-right: 50px;
    
 }
+/* question buttons */
 .btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -63,7 +65,8 @@ body.correct {
 .start-btn, .next-btn {
     font-size: 2em;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 50px 10px;
+    justify-self: auto;
 }
 .controls {
     display:flex;
@@ -74,3 +77,85 @@ body.correct {
 .hide {
     display: none;
 }
+
+.timer {
+    height: 200px;
+    padding: px;
+    background: #13293d;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+   
+  }
+  
+  .timer-text {
+    padding: 55px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+  }
+
+
+  .reset-button {
+    font-size: 20px;
+    height: 30px;
+    line-height: 8px;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+
+
+  .win-loss-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px; 
+    /* box-shadow: 0 0 10px 10px; */
+
+  }
+
+
+  section {
+    flex: 0 auto;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 50px;
+  }
+  
+
+
+
+
+
+ /* 
+  @media screen and (max-width: 1183px) {
+    main {
+      flex-direction: column;
+    }
+  
+    .word-guess,
+    .results {
+      width: 90vw;
+    }
+  
+    section {
+      background-color: white;
+      margin: 20px auto;
+      width: 92vw;
+    }
+  }
+  
+  @media screen and (max-width: 504px) {
+    .large-font {
+      font-size: 2em;
+    }
+  
+    .reset-button {
+      font-size: 12px;
+      width: 20ox;
+      
+    }
+  
+    .timer {
+      height: 200px;
+    }
+  }
