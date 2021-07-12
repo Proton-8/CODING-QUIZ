@@ -29,7 +29,7 @@ body.correct {
 .container {
     width: 680px;
     max-width: 80%;
-    background-color:rgba(52, 202, 114, 0.623);
+    background-color:rgba(118, 159, 221, 0.623);
     border-radius: 5px;
     box-shadow: 0 0 10px 10px;
     margin-right: 50px;
@@ -44,15 +44,16 @@ body.correct {
 }
 .btn {
     --hue: var(--hue-neutrl);
-    border: 1px solid hsl(var(--hue), 100%, 30%);
-    background-color:floralwhite;
+    border: 10px solid ;
+    background-color:rgb(31, 186, 197);
     padding: 5px 10px;
     border-radius: 5px;
-    color:mediumblue;
-    outline: none;
+    color:ivory;
+    outline:none;
 }
 .btn:hover {
     border-color: black;
+    /*border-bottom: var(--hue-wrong); */
 }
 .btn.correct {
     --hue: var(--hue-correct);
@@ -67,8 +68,13 @@ body.correct {
     font-weight: bold;
     padding: 50px 10px;
     justify-self: auto;
+    }
+.start-btn2 {
+  font-size: x-small;
+  justify-self:flex-end;
 }
-.controls {
+
+    .controls {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +127,16 @@ body.correct {
     border-radius: 50px;
   }
   
-
+  #name,
+  #email,
+  #submit {
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 20px;
+      box-sizing: border-box;
+      font-size: 18px;
+  
+  }
 
 
 

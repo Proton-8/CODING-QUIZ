@@ -1,6 +1,7 @@
 const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
+const questionElement = document.getElementById('questionText')
 const answerButtonsElement = document.getElementById ('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
 let shuffledQuestions 
@@ -10,7 +11,7 @@ let winCounter = 0;
 let loseCounter = 0;
 let isWin = false;
 let timer;
-let timerCount = 999;
+let timerCount = 30;
 
 
 
@@ -21,7 +22,7 @@ startButton.addEventListener('click', startGame)
 
 function startGame(){
     startTimer();
-    console.log('good to go');
+    //console.log('good to go');
 startButton.classList.add('hide');
 shuffledQuestions = questionArray.sort(() => Math.random() - .5);
 currentQuestionIndex = 0;
@@ -29,14 +30,16 @@ questionContainerElement.classList.remove('hide');
 setNextQuestion();
 }
 function setNextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex])
+   //resetState();   
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
 
 }
-function showQuestion(question){
-    questionElement.innerText = questionArray[0].questionText
-    let myAnswers = questionArray[0].answers
-    console.log (myAnswers)
-    questionArray[0].answers.forEach(answer => {
+function showQuestion(questionText){
+    questionElement.innerText = questionArray.questionText
+   // let myAnswers = questionArray[0].answers
+   
+   console.log (myAnswers)
+    questionArray.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn')
@@ -48,20 +51,45 @@ function showQuestion(question){
 
     })
 }
+
+/*
 function resetState(){
     nextButton.classList.add('hide')
-}
+    while (answerButtonsElement.firstChild){
+        answerButtonsElement.removeChild (answerButtonElement.firstChild)
+
+    }
+}*/
 
 function selectAnswer(e) {
 console.log(e.target)
+const selectedButton = e.target;
+const correct = selectedButton.dataset.correct;
+setStatusClass (document.body, correct);
+// make into an array
+Array.from(answerButtonsElement.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct);
+})
+}
 
+function setStatusClass(element, correct){
+    clearStatusClass(element)
+    if (correct){
+        element.classList.add('correct')}
+        else{
+            element.classList.add('wrong')}
+        }
+    
+function clearStatusClass(element){
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
 }
 
 const questionArray = [
     {
     questionText: ' What is 1 + 3 =  ??',
     answers: [
-        {text: '4',correct: true },
+        {text: '4', correct: true },
         {text: '5', correct: false},
         {text: '88', correct: false},
         {text: '808', correct: false}
@@ -109,6 +137,7 @@ function resetGame() {
 resetButton.addEventListener("click", resetGame);
 
 
+
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 
 function startTimer() {
@@ -133,6 +162,39 @@ function startTimer() {
     }, 1000);
   }
 console.log(timerCount);
+
+//.............................................
+
+
+var submitEl = document.querySelector("#submit");
+var nameInput = document.querySelector("#name");
+var emailInput = document.querySelector("#email");
+var submissionResponseEl = document.querySelector("#response");
+
+// Action to be performed on click store in named function
+function showResponse(event) {
+  // Prevent default action
+  event.preventDefault();
+  console.log(event);
+  var response = "Thank you for your submission " + nameInput.value + "! We will reach out to you at " + emailInput.value + ".";
+  submissionResponseEl.textContent = response;
+}
+  
+// Add listener to submit element
+submitEl.addEventListener("click", showResponse);
+
+//.............................................
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 
