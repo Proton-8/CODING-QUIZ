@@ -6,7 +6,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 font-size: x-large;
 }
 :root {
-    --hue-neutral: 200;
+    --hue-neutral: 180;
     --hue-wrong: 0;
     --hue-correct: 145;
 
@@ -15,14 +15,10 @@ font-size: x-large;
 body {
 --hue: var(--hue-neutral);
 padding: 10;
-/*margin:10%  */
-/*display: flex; */
 height: 100vh;
 justify-content: center;
 /*align-items: center;*/
 background-color: hsl(var(--hue), 100%, 20%)
-
-
 
 }
 body.correct {
@@ -50,7 +46,7 @@ body.correct {
 .btn {
     --hue: var(--hue-neutrl);
     border: 30px solid ;
-    background-color:rgb(194, 81, 16);
+    background-color:rgb(13, 27, 221);
     padding: 5px 10px;
     border-radius: 5px;
     color:ivory;
@@ -62,11 +58,12 @@ body.correct {
 }
 .btn.correct {
     --hue: var(--hue-correct);
-    color:green
+    color:rgb(35, 228, 35)
 }
 
 .btn.wrong{
     --hue: var(--hue-wrong);
+    color:rgb(236, 99, 20)
 }
 .start-btn, .next-btn {
     font-size: 2em;
@@ -113,6 +110,7 @@ body.correct {
     margin-right: 10px;
   }
 
+.results-container
 
   /*.win-loss-container {
    /* display: flex;*/

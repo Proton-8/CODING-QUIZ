@@ -33,7 +33,7 @@ function startGame(){
     rightAnswers = 0;
     startTimer();
     resetGame();
-    console.log('good to go');
+  //  console.log('good to go');
 startButton.classList.add('hide');
 //startButton2.classList.add('hide');
 shuffledQuestions = questionArray.sort(() => Math.random() - .5);
@@ -52,7 +52,7 @@ function showQuestion(question){
     questionElement.innerText = question.question
    // let myAnswers = questionArray[0].answers
    
-  // console.log (myAnswers)
+  // 
   
   
   question.answers.forEach(answer => {
@@ -62,6 +62,7 @@ function showQuestion(question){
         if (answer.correct) {
             button.dataset.correct = answer.correct
             winCounter++
+            console.log (winCounter);
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
@@ -209,6 +210,8 @@ function startTimer() {
         questionContainerElement.classList.add('hide');
         nextButton.classList.add('hide')
         mainEl.textContent = " Time is Up ! ";
+       // mainE1.textContent = "You got"  +rightAnswers 
+        prompt( 'you got')
        
       stopTest();
         loseGame();
