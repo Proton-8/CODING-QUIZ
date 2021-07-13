@@ -2,6 +2,7 @@ const startButton = document.getElementById('start-btn')
 const startButton2 = document.getElementById('start-btn2')
 const nextButton = document.getElementById('next-btn')
 const finalScore = 0
+const mainEl = document.getElementById('main');
 const finalName = document.getElementById('name')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
@@ -36,7 +37,7 @@ function startGame(){
     resetGame();
     console.log('good to go');
 startButton.classList.add('hide');
-startButton2.classList.add('hide');
+//startButton2.classList.add('hide');
 shuffledQuestions = questionArray.sort(() => Math.random() - .5);
 currentQuestionIndex = 0;
 questionContainerElement.classList.remove('hide');
@@ -98,7 +99,8 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
     questionContainerElement.classList.add('hide')
     clearInterval(timer);
     finalName.classList.remove('hide')
-    console.log (rightAnswers);
+
+    //console.log (winCounter);
     
 }
 }
@@ -109,7 +111,7 @@ function setStatusClass(element, correct){
         element.classList.add('correct')}
         else{
             element.classList.add('wrong')}
-            timerCount = timerCount - timePenalty
+            //timerCount = timerCount - timePenalty
         }
     
 function clearStatusClass(element){
@@ -119,21 +121,23 @@ function clearStatusClass(element){
 
 const questionArray = [
     {
-    question: ' What is 1 + 3 =  ??',
+    question: ' Inside which HTML element do we put the JavaScript ?',
     answers: [
-        {text: '4', correct: true },
-        {text: '5', correct: false},
-        {text: '88', correct: false},
-        {text: '808', correct: false}
+        
+        {text: '<js>', correct: false},
+        {text: '<scripting>', correct: false },
+        {text: '<script>', correct: true},
+        {text:  '<javascript>', correct: false}
             ]
 
     },
     {
-        question: ' What is 5 + 3 =  ??',
+        question: ' Which of the following is not a valid JavaScript variable name ?',
         answers: [
-            {text: '8', correct: true },
-            {text: '10', correct: false},
-            {text: '22', correct: false}
+            {text: '2names', correct: true },
+            {text: '_first_and_last_names', correct: false},
+            {text: 'FirstAndLast22', correct: false},
+            {text: 'None of the above', correct: false}
           
         ]
     },
@@ -147,7 +151,30 @@ const questionArray = [
 
                  ]
           
+    },
+    {
+
+        question: ' Is it possible to nest functions in JavaScript? ',
+        answers: [
+            {text:"False", correct: false},
+            {text:"True", correct: true }
+
+                 ]
+          
+    },
+    {
+        question: ' What is mean by “this” keyword in javascript? ',
+        answers: [
+            {text: ' It referes previous object ', correct: false},
+            {text: ' It refers current object ', correct: true },
+            {text: ' It is variable which contains value ', correct: false},
+            {text: ' None of the above ', correct: false}
+          
+        ]
     }
+    
+
+
 ]
 
 
@@ -189,12 +216,15 @@ function startTimer() {
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
-        
+        questionContainerElement.classList.add('hide');
+        nextButton.classList.add('hide')
+        mainEl.textContent = " Time is Up ! ";
+        stopTest();
         loseGame();
       }
     }, 1000);
   }
-console.log(timerCount);
+//console.log(timerCount);
 
 //.............................................
 
