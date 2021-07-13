@@ -10,7 +10,7 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
 const timePenalty = 5;
 
-
+let scores =  JSON.parse(localStorage.getItem("scores")) || [];
 let shuffledQuestions 
 let currentQuestionIndex
 let score = 0;
@@ -19,8 +19,6 @@ let loseCounter = 0;
 let isWin = false;
 let timer;
 let timerCount = 30;
-
-
 
 
 
@@ -89,13 +87,14 @@ setStatusClass (document.body, correct);
 Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
     rightAnswers++;
-    console.log(rightAnswers);
+    //console.log(rightAnswers);
    // alert (" You are CORRECT !! ");
 })
 // check to see if there are any more questions
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
   nextButton.classList.remove('hide')
-} else {
+} 
+else {
     questionContainerElement.classList.add('hide')
     clearInterval(timer);
     finalName.classList.remove('hide')
@@ -103,6 +102,7 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
     //console.log (winCounter);
     
 }
+
 }
 
 function setStatusClass(element, correct){
@@ -174,23 +174,13 @@ const questionArray = [
     }
     
 
-
 ]
 
-
-// Calls init() so that it fires when page opened
-// init();
-
-// Bonus: Add reset button
-//var resetButton = document.querySelector(".reset-button");
 
 function resetGame() {
   // Resets win and loss counts
   winCounter = 0;
   loseCounter = 0;
-  // Renders win and loss counts and sets them into client storage
-  //setWins()
- // setLosses()
 }
 // Attaches event listener to button
 //resetButton.addEventListener("click", resetGame);
@@ -219,59 +209,9 @@ function startTimer() {
         questionContainerElement.classList.add('hide');
         nextButton.classList.add('hide')
         mainEl.textContent = " Time is Up ! ";
-        stopTest();
+       
+      stopTest();
         loseGame();
       }
     }, 1000);
   }
-//console.log(timerCount);
-
-//.............................................
-
-
-var submitEl = document.querySelector("#submit");
-var nameInput = document.querySelector("#name");
-var emailInput = document.querySelector("#email");
-var submissionResponseEl = document.querySelector("#response");
-
-// Action to be performed on click store in named function
-function showResponse(event) {
-  // Prevent default action
-  event.preventDefault();
-  console.log(event);
-  var response = "Thank you for your submission " + nameInput.value + "! We will reach out to you at " + emailInput.value + ".";
-  submissionResponseEl.textContent = response;
-}
-  
-// Add listener to submit element
-submitEl.addEventListener("click", showResponse);
-
-//.............................................
-
-
-function loseGame(){
-    var response = "Thank you for your submission " ;
-}
-
-
-
-
-
-
-
-
-
-/*
-
-
-for (var i=0; i < question.length; i++){
-    let response = window.prompt(question[i].prompt);
-    if(response == question[i].correct){
-        score++;
-        alert (" You are CORRECT !! ");
-    } else {
-        alert (" Sorry, Wrong Answer :-( ");
-    }
-    }
-    alert ("you got " + score + " of" + question.length)
-*/

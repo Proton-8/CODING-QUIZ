@@ -1,7 +1,7 @@
 *, *::before, *::after {
 
 
-  box-sizing: border-box; 
+  /* box-sizing: border-box; */
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 font-size: x-large;
 }
@@ -36,7 +36,7 @@ body.correct {
     background-color:rgba(118, 159, 221, 0.623);
     border-radius: 5px;
     box-shadow: 0 0 10px 10px;
-    margin-right: 10px; 
+    /*margin-right: 10px; */
    
 }
 /* question buttons */
@@ -79,9 +79,9 @@ body.correct {
   justify-self: flex-end; 
 }*/
 
-   .controls {
+.controls {
     /*justify-content: center;*/
-    align-items:center
+    align-items: center;
 }
 
 .hide {
