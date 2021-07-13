@@ -1,9 +1,15 @@
 const startButton = document.getElementById('start-btn')
+const startButton2 = document.getElementById('start-btn2')
 const nextButton = document.getElementById('next-btn')
+const finalScore = 0
+const finalName = document.getElementById('name')
 const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('questionText')
-const answerButtonsElement = document.getElementById ('answer-buttons')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
+const timePenalty = 5;
+
+
 let shuffledQuestions 
 let currentQuestionIndex
 let score = 0;
@@ -18,33 +24,45 @@ let timerCount = 30;
 
 
 startButton.addEventListener('click', startGame)
-
+//listen for Next Button to be 'clicked' and move onto next question
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
 function startGame(){
+    rightAnswers = 0;
     startTimer();
-    //console.log('good to go');
+    resetGame();
+    console.log('good to go');
 startButton.classList.add('hide');
+startButton2.classList.add('hide');
 shuffledQuestions = questionArray.sort(() => Math.random() - .5);
 currentQuestionIndex = 0;
 questionContainerElement.classList.remove('hide');
 setNextQuestion();
 }
+
+
 function setNextQuestion() {
-   //resetState();   
+    resetState();   
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 
 }
-function showQuestion(questionText){
-    questionElement.innerText = questionArray.questionText
+function showQuestion(question){
+    questionElement.innerText = question.question
    // let myAnswers = questionArray[0].answers
    
-   console.log (myAnswers)
-    questionArray.answers.forEach(answer => {
+  // console.log (myAnswers)
+  
+  
+  question.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn')
         if (answer.correct) {
             button.dataset.correct = answer.correct
+            winCounter++
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
@@ -52,24 +70,37 @@ function showQuestion(questionText){
     })
 }
 
-/*
+
 function resetState(){
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild){
-        answerButtonsElement.removeChild (answerButtonElement.firstChild)
+        answerButtonsElement.removeChild (answerButtonsElement.firstChild)
 
     }
-}*/
+}
 
 function selectAnswer(e) {
 console.log(e.target)
 const selectedButton = e.target;
 const correct = selectedButton.dataset.correct;
 setStatusClass (document.body, correct);
-// make into an array
+//convert into an array from our answer button children
 Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
+    rightAnswers++;
+    console.log(rightAnswers);
+   // alert (" You are CORRECT !! ");
 })
+// check to see if there are any more questions
+if (shuffledQuestions.length > currentQuestionIndex + 1) {
+  nextButton.classList.remove('hide')
+} else {
+    questionContainerElement.classList.add('hide')
+    clearInterval(timer);
+    finalName.classList.remove('hide')
+    console.log (rightAnswers);
+    
+}
 }
 
 function setStatusClass(element, correct){
@@ -78,6 +109,7 @@ function setStatusClass(element, correct){
         element.classList.add('correct')}
         else{
             element.classList.add('wrong')}
+            timerCount = timerCount - timePenalty
         }
     
 function clearStatusClass(element){
@@ -87,7 +119,7 @@ function clearStatusClass(element){
 
 const questionArray = [
     {
-    questionText: ' What is 1 + 3 =  ??',
+    question: ' What is 1 + 3 =  ??',
     answers: [
         {text: '4', correct: true },
         {text: '5', correct: false},
@@ -97,7 +129,7 @@ const questionArray = [
 
     },
     {
-        questionText: ' What is 5 + 3 =  ??',
+        question: ' What is 5 + 3 =  ??',
         answers: [
             {text: '8', correct: true },
             {text: '10', correct: false},
@@ -107,7 +139,7 @@ const questionArray = [
     },
     {
 
-        questionText: ' Which one of these is a JavaScript package manager?',
+        question: ' Which one of these is a JavaScript package manager?',
         answers: [
             {text:"Node.js", correct: false},
             {text:"TypeScript", correct: false},
@@ -123,18 +155,18 @@ const questionArray = [
 // init();
 
 // Bonus: Add reset button
-var resetButton = document.querySelector(".reset-button");
+//var resetButton = document.querySelector(".reset-button");
 
 function resetGame() {
   // Resets win and loss counts
   winCounter = 0;
   loseCounter = 0;
   // Renders win and loss counts and sets them into client storage
-  setWins()
-  setLosses()
+  //setWins()
+ // setLosses()
 }
 // Attaches event listener to button
-resetButton.addEventListener("click", resetGame);
+//resetButton.addEventListener("click", resetGame);
 
 
 
@@ -157,6 +189,7 @@ function startTimer() {
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
+        
         loseGame();
       }
     }, 1000);
@@ -186,7 +219,9 @@ submitEl.addEventListener("click", showResponse);
 //.............................................
 
 
-
+function loseGame(){
+    var response = "Thank you for your submission " ;
+}
 
 
 
