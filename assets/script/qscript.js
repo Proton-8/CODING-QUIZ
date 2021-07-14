@@ -10,7 +10,6 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
 const timePenalty = 5;
 
-//let scores =  JSON.parse(localStorage.getItem("scores")) || [];
 let shuffledQuestions 
 let currentQuestionIndex
 let score = 0;
@@ -18,7 +17,7 @@ let winCounter = 0;
 //let loseCounter = 0;
 let isWin = false;
 let timer = 0 ;
-let timerCount = 10;
+let timerCount = 30;
 
 
 
@@ -31,23 +30,23 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame(){
-    rightAnswers = 0;
     startTimer();
-    resetGame();
-  //  console.log('good to go');
+// removes start button
 startButton.classList.add('hide');
-//startButton2.classList.add('hide');
+
+// THE main random question selector
 shuffledQuestions = questionArray.sort(() => Math.random() - .5);
 currentQuestionIndex = 0;
 questionContainerElement.classList.remove('hide');
 setNextQuestion();
 }
 
-
+// advance to next question
 function setNextQuestion() {
     resetState();   
     showQuestion(shuffledQuestions[currentQuestionIndex]);
-
+ 
+// display the question with the answer options
 }
 function showQuestion(question){
     questionElement.innerText = question.question
@@ -61,10 +60,7 @@ function showQuestion(question){
         button.classList.add('btn')
         if (answer.correct) {
             button.dataset.correct = answer.correct
-            // If correct, add 1 to the score !
-            score++
-            console.log (score);
-        }
+                    }
         else {
            console.log ('wrong answer')
             timerCount = timerCount - timePenalty
@@ -88,14 +84,22 @@ function resetState(){
 function selectAnswer(e) {
 //console.log(e.target)
 const selectedButton = e.target;
+//check to see if the selection was correct
 const correct = selectedButton.dataset.correct;
+console.log (correct);
+ if (correct) {
+   score++;}
+   // removes 5 secs for wrong answer
+      else {
+     timerCount = timerCount-timePenalty;
+   }
+console.log(score);
+   
 setStatusClass (document.body, correct);
 //convert into an array from our answer button children
 Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
-    //rightAnswers++;
-    //console.log(rightAnswers);
-   // alert (" You are CORRECT !! ");
+    
 })
 // check to see if there are any more questions
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
@@ -106,7 +110,7 @@ else {
     clearInterval(timer);
     finalName.classList.remove('hide')
 
-    //console.log (winCounter);
+    
     
 }
 
@@ -118,7 +122,7 @@ function setStatusClass(element, correct){
         element.classList.add('correct')}
         else{
             element.classList.add('wrong')}
-            //timerCount = timerCount - timePenalty
+            
         }
     
 function clearStatusClass(element){
@@ -128,57 +132,27 @@ function clearStatusClass(element){
 
 
 
-function resetGame() {
-  // Resets win and loss counts
-  winCounter = 0;
-  loseCounter = 0;
-}
-// Attaches event listener to button
-//resetButton.addEventListener("click", resetGame);
 
-
-
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-
+// The setTimer function starts and stops the timer 
 function startTimer() {
-    // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerElement.textContent = timerCount;
-     // if (timerCount >= 0) {
-        // Tests if win condition is met
-        //if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-         // clearInterval(timer);
-        //  winGame();
-    //    }
-  //    }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
+  // Sets timer
+  timer = setInterval(function() {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    if (timerCount >= 0) {
+      // Tests if win condition is met
+      if (isWin && timerCount > 0) {
+        // Clears interval and stops timer
         clearInterval(timer);
-        questionContainerElement.classList.add('hide');
-        nextButton.classList.add('hide')
-        mainEl.textContent = " Time is Up ! ";
-       // mainE1.textContent = "You got"  + 
-       alert ('you got  '+ score +' correct!');       
-      stopTest();
-        loseGame();
+        winGame();
       }
-    }, 1000);
-  }
+    }
+    // Tests if time has run out
+    if (timerCount <= 0) {
+      // Clears interval
+      clearInterval(timer);
+     // loseGame();
+    }
+  }, 1000);
+}
 
-//   let secondsLeft = 76;
-// // Quiz Timer:
-// let timer = () => {
-//   let timerInterval = setInterval(() => {
-//     secondsLeft--;
-//     timeEl.textContent = 'Time: ' + secondsLeft;
-//     if (secondsLeft === 0) {
-//       clearInterval(timerInterval);
-//       startScreen.style.display = 'none';
-//       endScreen.style.display = 'block';
-//       questionScreen.style.display = 'none';
-//     }
-//   }, 1000);
-// }

@@ -1,7 +1,8 @@
+// separate javascript of only questions
 
 const questionArray = [
     {
-    question: ' Inside which HTML element do we put the JavaScript ?',
+    question: '    Inside which HTML element do we put the JavaScript ?',
     answers: [
         
         {text: '<js>', correct: false},
@@ -12,7 +13,7 @@ const questionArray = [
 
     },
     {
-        question: ' Which of the following is not a valid JavaScript variable name ?',
+        question: '    Which of the following is not a valid JavaScript variable name ?',
         answers: [
             {text: '2names', correct: true },
             {text: '_first_and_last_names', correct: false},
@@ -23,7 +24,7 @@ const questionArray = [
     },
     {
 
-        question: ' Which one of these is a JavaScript package manager?',
+        question: '    Which one of these is a JavaScript package manager?',
         answers: [
             {text:"Node.js", correct: false},
             {text:"TypeScript", correct: false},
@@ -34,7 +35,7 @@ const questionArray = [
     },
     {
 
-        question: ' Is it possible to nest functions in JavaScript? ',
+        question: '    Is it possible to nest functions in JavaScript? ',
         answers: [
             {text:"False", correct: false},
             {text:"True", correct: true }
@@ -43,7 +44,7 @@ const questionArray = [
           
     },
     {
-        question: ' What is mean by “this” keyword in javascript? ',
+        question: '    What is mean by “this” keyword in javascript? ',
         answers: [
             {text: ' It referes previous object ', correct: false},
             {text: ' It refers current object ', correct: true },
