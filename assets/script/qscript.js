@@ -1,6 +1,7 @@
 const startButton = document.getElementById('start-btn')
 const startButton2 = document.getElementById('start-btn2')
 const nextButton = document.getElementById('next-btn')
+const submitButton = document.getElementById('submit')
 const finalScore = 0
 const mainEl = document.getElementById('main');
 const finalName = document.getElementById('name')
@@ -10,16 +11,14 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
 const timePenalty = 5;
 
-let shuffledQuestions 
-let currentQuestionIndex
+let shuffledQuestions ;
+let currentQuestionIndex;
 let score = 0;
 let winCounter = 0;
 //let loseCounter = 0;
 let isWin = false;
 let timer = 0 ;
 let timerCount = 30;
-
-
 
 
 startButton.addEventListener('click', startGame)
@@ -63,7 +62,7 @@ function showQuestion(question){
                     }
         else {
            console.log ('wrong answer')
-            timerCount = timerCount - timePenalty
+           // timerCount = timerCount - timePenalty
         }
         button.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
@@ -88,7 +87,9 @@ const selectedButton = e.target;
 const correct = selectedButton.dataset.correct;
 console.log (correct);
  if (correct) {
-   score++;}
+   score++;
+  alert(" AWESOME, You are CORRECT !!!");
+  }
    // removes 5 secs for wrong answer
       else {
      timerCount = timerCount-timePenalty;
@@ -107,10 +108,12 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
 } 
 else {
     questionContainerElement.classList.add('hide')
+        
     clearInterval(timer);
-    finalName.classList.remove('hide')
-
-    
+     finalName.classList.remove('hide');
+    submitButton.classList.remove('hide');
+    isWin ='true'
+   
     
 }
 
@@ -144,15 +147,99 @@ function startTimer() {
       if (isWin && timerCount > 0) {
         // Clears interval and stops timer
         clearInterval(timer);
-        winGame();
+        finish()
       }
     }
     // Tests if time has run out
     if (timerCount <= 0) {
+      alert("Time is up...");
       // Clears interval
       clearInterval(timer);
-     // loseGame();
+      finish()
     }
   }, 1000);
 }
 
+//---------------work in progress-----------------------------------------------------------
+
+// Selectors
+const currentTimeEl = document.querySelector('#currentTime')
+const timerEl = document.querySelector('#startTime')
+const questionsDivEl = document.querySelector('#questionsDiv')
+const wrapperEl = document.querySelector('#wrapper')
+const questionsTextEl = document.querySelector('#questionsText')
+const choicesUlEl = document.querySelector('#choicesUl')
+
+
+
+
+function finish(){
+  questionsDivEl.textContent = '';
+  timerEl.textContent = '';
+
+  //Creating Header
+  const createHeaderEl = document.createElement('h1');
+  createHeaderEl.setAttribute('id', createHeaderEl);
+  createHeaderEl.textContent = 'Nice job!';
+
+  questionsDivEl.appendChild(createHeaderEl);
+
+  //Creating Text
+  const createTextEl =document.createElement('p');
+  createTextEl.setAttribute('id', 'createTextEl');
+
+  questionsDivEl.appendChild(createTextEl);
+
+
+  //Creates Label
+  const createlabelEl = document.createElement('label');
+  createlabelEl.setAttribute('id', 'createlabelEl');
+  createlabelEl.textContent = '';
+
+  questionsDivEl.appendChild(createlabelEl);
+
+  //Creates Input
+  const createInputEl = document.createElement('input');
+  createInputEl.setAttribute('type', 'text');
+  createInputEl.setAttribute('id', 'createInputEl');
+  createInputEl.textContent ='';
+
+  questionsDivEl.appendChild(createInputEl);
+
+  //Creates Submit Button
+  const createSubmitEl = document.createElement('button');
+  createSubmitEl.setAttribute('type', 'submit');
+  createSubmitEl.setAttribute('id', 'submitButtonEl');
+  createSubmitEl.textContent = 'Sumbit';
+
+  questionsDivEl.appendChild(createSubmitEl);
+
+
+
+  // Captures initials and score and put them into local storage
+  createSubmitEl.addEventListener('click', function(){
+    let initials = createInputEl.value;
+
+    if (initials === null) {
+      alert("Please enter your initials");
+    }else {
+      var finalScore = {
+        initials: initials,
+        score: timeLeft
+      }
+      console.log(finalScore);
+      let scoreData = localStorage.getItem('scoreData');
+      if (scoreData === null) {
+        scoreData = [];
+      }else {
+        scoreData = JSON.parse(scoreData);
+      }
+      scoreData.push(finalScore);
+      const newScore = JSON.stringify(scoreData);
+      localStorage.setItem('scoreData', newScore);
+      // Takes user to High Score page
+      window.location.replace('./highScores.html')
+    }
+
+  })
+}

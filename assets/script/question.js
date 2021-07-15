@@ -1,5 +1,7 @@
 // separate javascript of only questions
 
+
+// Question Array for the quiz-------------
 const questionArray = [
     {
     question: '    Inside which HTML element do we put the JavaScript ?',

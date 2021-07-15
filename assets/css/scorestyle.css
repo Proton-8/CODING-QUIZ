@@ -1,0 +1,57 @@
+*
+{
+  margin: 50;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+  #scores {
+    top: 5px;
+    font-size: 5rem;
+    /*list-style: none;
+    /*display: flex; */
+    /*padding: 10px; */
+    margin: auto;
+  }
+ /* #againBtn{
+    margin: 1.3rem 0;
+    font-size: 1.3rem;
+    list-style: none;
+
+  }*/
+
+  #resetBtn{
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    list-style: none;
+    background-color:orange
+  }
+  
+  #navbar {
+    background-color:linen;
+    position:relative
+    top: 10px;
+    width: 25vw;
+    height:2em
+}
+
+#navBar a {
+    color:magenta;
+    text-decoration: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 1rem;
+    height: 3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#navBar a:hover{
+  
+  border-color:rebeccapurple;
+  padding: 10px;
+  text-decoration: underline;
+
+}

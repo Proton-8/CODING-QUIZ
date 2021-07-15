@@ -11,7 +11,7 @@ The quiz is timed with the following features:
 <li>  The background also changes color related to if the answer is correct or incorrect.
 <li> A 5 second penalty is subtracted from the time for every incorrect answer.
 <li> The quiz ends when all questions are answered or time runs out</li>
-<li> The user is then presented thier score and asked to enter thier intials</li>
+<li> The user is then asked to enter thier intials</li>
 <li>The user is then presented with the high scores
 
 </p>
@@ -22,4 +22,10 @@ The quiz is timed with the following features:
 
 <h2>  EXAMPLE of the final product in use: </h2><br>
 
-<img src="./PW-Generator.gif" alt="My HW Password Generator Project GIF">
+<img src="Code-Quiz.gif" alt="Code Quiz DEMO GIF">;
+
+
+### My Contact Info:
+
+Email: RonaShutter@gmail.com<br>
+GitHub: https://github.com/Proton-8
