@@ -105,15 +105,16 @@ Array.from(answerButtonsElement.children).forEach(button => {
 // check to see if there are any more questions
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
   nextButton.classList.remove('hide')
+  alert("next button")
 } 
 else {
     questionContainerElement.classList.add('hide')
-        
+     alert("no more questions")   
     clearInterval(timer);
      finalName.classList.remove('hide');
     submitButton.classList.remove('hide');
     isWin ='true'
-   
+    finish()
     
 }
 
@@ -143,9 +144,12 @@ function startTimer() {
     timerCount--;
     timerElement.textContent = timerCount;
     if (timerCount >= 0) {
+     // alert("time not zero");
+
       // Tests if win condition is met
       if (isWin && timerCount > 0) {
         // Clears interval and stops timer
+        alert('WIN and time ends');
         clearInterval(timer);
         finish()
       }
@@ -162,9 +166,11 @@ function startTimer() {
 
 //---------------work in progress-----------------------------------------------------------
 
+//Z input............
+
 // Selectors
-const currentTimeEl = document.querySelector('#currentTime')
-const timerEl = document.querySelector('#startTime')
+//const currentTimeEl = document.querySelector('#currentTime')
+//const timerEl = document.querySelector('#startTime')
 const questionsDivEl = document.querySelector('#questionsDiv')
 const wrapperEl = document.querySelector('#wrapper')
 const questionsTextEl = document.querySelector('#questionsText')
@@ -174,13 +180,14 @@ const choicesUlEl = document.querySelector('#choicesUl')
 
 
 function finish(){
+  alert("made it to finish...");
   questionsDivEl.textContent = '';
   timerEl.textContent = '';
 
   //Creating Header
   const createHeaderEl = document.createElement('h1');
   createHeaderEl.setAttribute('id', createHeaderEl);
-  createHeaderEl.textContent = 'Nice job!';
+  createHeaderEl.textContent = 'All done!';
 
   questionsDivEl.appendChild(createHeaderEl);
 
@@ -228,7 +235,7 @@ function finish(){
         score: timeLeft
       }
       console.log(finalScore);
-      let scoreData = localStorage.getItem('scoreData');
+      let scoreData = localStorage.getItem('score');
       if (scoreData === null) {
         scoreData = [];
       }else {
@@ -236,7 +243,7 @@ function finish(){
       }
       scoreData.push(finalScore);
       const newScore = JSON.stringify(scoreData);
-      localStorage.setItem('scoreData', newScore);
+      localStorage.setItem('score', newScore);
       // Takes user to High Score page
       window.location.replace('./highScores.html')
     }
