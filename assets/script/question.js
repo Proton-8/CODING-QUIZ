@@ -14,37 +14,37 @@ const questionArray = [
             ]
 
     },
-    {
-        question: '    Which of the following is not a valid JavaScript variable name ?',
-        answers: [
-            {text: '2names', correct: true },
-            {text: '_first_and_last_names', correct: false},
-            {text: 'FirstAndLast22', correct: false},
-            {text: 'None of the above', correct: false}
+    // {
+    //     question: '    Which of the following is not a valid JavaScript variable name ?',
+    //     answers: [
+    //         {text: '2names', correct: true },
+    //         {text: '_first_and_last_names', correct: false},
+    //         {text: 'FirstAndLast22', correct: false},
+    //         {text: 'None of the above', correct: false}
           
-        ]
-    },
-    {
+    //     ]
+    // },
+    // {
 
-        question: '    Which one of these is a JavaScript package manager?',
-        answers: [
-            {text:"Node.js", correct: false},
-            {text:"TypeScript", correct: false},
-            {text:"npm", correct: true }
+    //     question: '    Which one of these is a JavaScript package manager?',
+    //     answers: [
+    //         {text:"Node.js", correct: false},
+    //         {text:"TypeScript", correct: false},
+    //         {text:"npm", correct: true }
 
-                 ]
+    //              ]
           
-    },
-    {
+    // },
+    // {
 
-        question: '    Is it possible to nest functions in JavaScript? ',
-        answers: [
-            {text:"False", correct: false},
-            {text:"True", correct: true }
+    //     question: '    Is it possible to nest functions in JavaScript? ',
+    //     answers: [
+    //         {text:"False", correct: false},
+    //         {text:"True", correct: true }
 
-                 ]
+    //              ]
           
-    },
+    // },
     {
         question: '    What is mean by “this” keyword in javascript? ',
         answers: [

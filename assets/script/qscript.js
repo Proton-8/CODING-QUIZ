@@ -1,7 +1,7 @@
 const startButton = document.getElementById('start-btn')
 const startButton2 = document.getElementById('start-btn2')
 const nextButton = document.getElementById('next-btn')
-const submitButton = document.getElementById('submit')
+// const submitButton = document.getElementById('submit')
 const finalScore = 0
 const mainEl = document.getElementById('main');
 const finalName = document.getElementById('name')
@@ -10,6 +10,18 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.querySelector(".timer-count");
 const timePenalty = 5;
+
+
+let submitEl = document.querySelector("#submit");
+let nameInput = document.querySelector("#name");
+let emailInput = document.querySelector("#email");
+let submissionResponseEl = document.querySelector("#response");
+
+
+
+
+
+
 
 let shuffledQuestions ;
 let currentQuestionIndex;
@@ -105,14 +117,14 @@ Array.from(answerButtonsElement.children).forEach(button => {
 // check to see if there are any more questions
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
   nextButton.classList.remove('hide')
-  alert("next button")
+  //alert("next button")
 } 
 else {
-    questionContainerElement.classList.add('hide')
-     alert("no more questions")   
+    questionContainerElement.classList.add('hide');
+     console.log("no more questions")  ;
     clearInterval(timer);
      finalName.classList.remove('hide');
-    submitButton.classList.remove('hide');
+    submitEl.classList.remove('hide');
     isWin ='true'
     finish()
     
@@ -151,6 +163,7 @@ function startTimer() {
         // Clears interval and stops timer
         alert('WIN and time ends');
         clearInterval(timer);
+        console.log("ok made it to 154")
         finish()
       }
     }
@@ -159,6 +172,7 @@ function startTimer() {
       alert("Time is up...");
       // Clears interval
       clearInterval(timer);
+    console.log("ok made it 162")
       finish()
     }
   }, 1000);
@@ -171,31 +185,51 @@ function startTimer() {
 // Selectors
 //const currentTimeEl = document.querySelector('#currentTime')
 //const timerEl = document.querySelector('#startTime')
-const questionsDivEl = document.querySelector('#questionsDiv')
-const wrapperEl = document.querySelector('#wrapper')
-const questionsTextEl = document.querySelector('#questionsText')
-const choicesUlEl = document.querySelector('#choicesUl')
+//const questionsDivEl = document.querySelector('#questionsDiv')
+//const wrapperEl = document.querySelector('#wrapper')
+//const questionsTextEl = document.querySelector('#questionsText')
+//const choicesUlEl = document.querySelector('#choicesUl')
 
 
-
-
+// Action to be performed on click store in named function
+console.log(submitEl)
 function finish(){
-  alert("made it to finish...");
-  questionsDivEl.textContent = '';
-  timerEl.textContent = '';
+  alert("made it to the finish...");
+  submitEl.addEventListener('click', function(event){
+    event.preventDefault();
+    console.log('THIS BETTER WORK!!!')
+  })
 
-  //Creating Header
+// function showResponse(event) {
+//   // Prevent default action
+//   
+//   console.log(event);
+//   var response = "Thank you for your submission " + nameInput.value + "! Your score is " + score + ".";
+//   submissionResponseEl.textContent = response;
+
+}
+  
+// Add listener to submit element
+// submitEl.addEventListener("click", showResponse);
+
+
+/*
+ questionsDivEl.textContent = '';
+ timerEl.textContent = '';
+
+  Creating Header
+  
   const createHeaderEl = document.createElement('h1');
   createHeaderEl.setAttribute('id', createHeaderEl);
   createHeaderEl.textContent = 'All done!';
 
-  questionsDivEl.appendChild(createHeaderEl);
+  //questionsDivEl.appendChild(createHeaderEl);
 
   //Creating Text
   const createTextEl =document.createElement('p');
   createTextEl.setAttribute('id', 'createTextEl');
 
-  questionsDivEl.appendChild(createTextEl);
+ // questionsDivEl.appendChild(createTextEl);
 
 
   //Creates Label
@@ -203,15 +237,16 @@ function finish(){
   createlabelEl.setAttribute('id', 'createlabelEl');
   createlabelEl.textContent = '';
 
-  questionsDivEl.appendChild(createlabelEl);
+  //questionsDivEl.appendChild(createlabelEl);
 
   //Creates Input
+  alert("made it to create input 211 ...");
   const createInputEl = document.createElement('input');
   createInputEl.setAttribute('type', 'text');
   createInputEl.setAttribute('id', 'createInputEl');
   createInputEl.textContent ='';
 
-  questionsDivEl.appendChild(createInputEl);
+ // questionsDivEl.appendChild(createInputEl);
 
   //Creates Submit Button
   const createSubmitEl = document.createElement('button');
@@ -219,34 +254,34 @@ function finish(){
   createSubmitEl.setAttribute('id', 'submitButtonEl');
   createSubmitEl.textContent = 'Sumbit';
 
-  questionsDivEl.appendChild(createSubmitEl);
+ // questionsDivEl.appendChild(createSubmitEl); */
 
 
+//This is what you want to focus on.
+//   // Captures initials and score and put them into local storage
+//     submitEl.addEventListener('click', function(){
+//     let initials = nameInput.value()
 
-  // Captures initials and score and put them into local storage
-  createSubmitEl.addEventListener('click', function(){
-    let initials = createInputEl.value;
+//     if (initials === null) {
+//       alert("Please enter your initials");
+//     }else {
+//       var finalScore = {
+//         initials: initials,
+//         score: score
+//       }
+//       console.log(finalScore);
+//       let scoreData = localStorage.getItem('score');
+//       if (scoreData === null) {
+//         scoreData = [];
+//       }else {
+//         scoreData = JSON.parse(scoreData);
+//       }
+//       scoreData.push(finalScore);
+//       const newScore = JSON.stringify(scoreData);
+//       localStorage.setItem('score', newScore);
+//       // Takes user to High Score page
+//       window.location.replace('./highScores.html')
+//     }
 
-    if (initials === null) {
-      alert("Please enter your initials");
-    }else {
-      var finalScore = {
-        initials: initials,
-        score: timeLeft
-      }
-      console.log(finalScore);
-      let scoreData = localStorage.getItem('score');
-      if (scoreData === null) {
-        scoreData = [];
-      }else {
-        scoreData = JSON.parse(scoreData);
-      }
-      scoreData.push(finalScore);
-      const newScore = JSON.stringify(scoreData);
-      localStorage.setItem('score', newScore);
-      // Takes user to High Score page
-      window.location.replace('./highScores.html')
-    }
-
-  })
-}
+//   })
+// }
