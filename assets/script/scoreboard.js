@@ -1,6 +1,6 @@
 //Queryselectors for DOM manipulation
 const LeaderboardEl = document.querySelector('#scoreBoard');
-const playAgainBtn = document.querySelector('#againBtn');
+//const playAgainBtn = document.querySelector('#againBtn');
 const clearBtn = document.querySelector('#resetBtn');
 
 
@@ -19,16 +19,27 @@ resetBtn.addEventListener('click', function(){
 });
 
 //Getting our scores and intials out of local storage
+alert('test 567')
 let scoreData = localStorage.getItem("scoreData");
+alert('test 890')
 scoreData = JSON.parse(scoreData);
 
 //If there is scoreData then we will create an li, run through the loop, and render all
 //availble data
 if(scoreData !== null) {
     for(i = 0; i < scoreData.length; i++) {
-        var createLiEl = document.createElement('li');
-        createLiEl.textContent = `${scoreData[i].initials}: ${scoreData[i].score}`
+        
+            
+            console.log("i = " +i)
+        //var createLiEl = document.createElement('li');
+createLiEl.value = score;
+        createLiEl = ('init', 'score')
+       // console.log (createLiEl);
+        //createLiEl.textContent = `${init}: ${score}`
+        
+        //createLiEl.textContent = `${scoreData[i].initials}: ${scoreData[i].score}`
+
         LeaderboardEl.appendChild(createLiEl);
-        console.log(`${scoreData[i].initials}`);
+        //console.log(`${scoreData[i].initials}`);
     }
 };
